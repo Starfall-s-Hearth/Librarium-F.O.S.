@@ -1,4 +1,13 @@
+# ==================================================
 # Librarium F.O.S. - Core Configuration
-# Version 0.1
+# ==================================================
+# This file's main purpose is to load all the components
+# from the lib/ directory.
 
-echo "Librarium F.O.S. config loaded!"
+# The LIBRARIUM_ROOT variable is set by the installer.
+# We use it to reliably find our library files.
+if test -d "$LIBRARIUM_ROOT/lib"
+    for file in $LIBRARIUM_ROOT/lib/*.fish
+        source $file
+    end
+end
