@@ -1,0 +1,8 @@
+# Ignore user-specific local configs
+local_config.fish
+local_aliases.sh
+
+# Ignore temporary or backup files
+*.tmp
+*.bak
+*.swo
