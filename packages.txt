@@ -1,0 +1,8 @@
+# packages.txt
+# Format: <package_name> <version> (if version is specified)
+
+# Require a specific version
+lua54 5.4.8-2
+
+# Install the latest version
+neovim

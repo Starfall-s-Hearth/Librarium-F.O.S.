@@ -1,7 +1,5 @@
 # Librarium F.O.S. 📚
 
-NOTE!!!: HEAVY WIP
-
 A local-first, neurodivergent-friendly shell environment for Termux, designed to be atomic, lightweight, and extensible.
 
 ## About The Project
@@ -17,8 +15,21 @@ The goal is to create a setup that is powerful and deeply customizable, yet simp
 * **🔗 Symlink-Based**: All configurations are managed in this single repository and safely linked into place by the installer.
 * **🧠 Neurodivergent-Friendly**: A focus on clarity, low cognitive load, and clean interfaces to make the command line a more comfortable place.
 * **🪶 Lightweight**: Built with performance in mind for a snappy experience on mobile devices.
-* **🧩 Extensible**: Designed to be extended with custom shell scripts, functions, and a built-in plugin manager. A Lua-based API is planned for high-performance extensions.
-* **🔒 Secure by Design**: Built with privacy and security in mind, with a custom, lockfile-based plugin system instead of relying on third-party managers.
+* **🧩 Extensible**: Features a declarative system for managing system packages (`packages.txt`) and shell plugins (`plugins.txt`).
+* **🔒 Secure by Design**: The built-in plugin manager uses a per-plugin lockfile system to ensure all dependencies are reproducible and secure.
+
+***
+
+## Usage
+
+Librarium is managed by editing simple text files and then running the installer to apply the changes.
+
+* **To manage system packages**: Add package names to the `packages.txt` file (e.g., `neovim` or `lua54 5.4.8-2`).
+* **To manage shell plugins**: Add the plugin's GitHub repository (`user/repo`) to the `plugins.txt` file.
+* **To add a custom command**: Place an executable script in the `bin/` directory.
+* **To add a custom function**: Place a `.fish` file containing the function in the `lib/functions/` directory.
+
+After making changes, simply run `./install.sh` from the project root to apply them.
 
 ***
 
@@ -36,16 +47,14 @@ This roadmap outlines the major development phases for the project.
 - [x] Establish core principles and project structure.
 - [x] Develop a robust, modular installer script with logging and backups.
 - [x] Implement symlinking for configs (`etc`), functions (`lib/functions`), and binaries (`bin`).
-- [x] Design a custom plugin manager concept.
 
-### Phase 2: Plugin & Package Management (🚧 In Progress)
+### Phase 2: Plugin & Package Management (✅ Completed)
+- [x] Design and implement a custom plugin manager with caching.
 - [x] Implement a per-plugin lockfile system (`var/plugin_lockfiles`).
-- [x] Implement version locking and duplicate checking for plugins.
-- [ ] Implement plugin installation from a local cache for speed and offline use.
-- [ ] Implement atomic installation of plugins via symlinking from the cache.
-- [ ] Integrate with `pacman` and `glibc-runner` for managing system-level dependencies.
+- [x] Implement atomic installation of plugins via symlinking.
+- [x] Integrate with `pacman` to manage system packages declaratively.
 
-### Phase 3: Core Shell Features (Next Up)
+### Phase 3: Core Shell Features (🚧 Up Next)
 - [ ] Design and implement a custom shell prompt (e.g., Starship).
 - [ ] Add a library of useful default functions and aliases.
 - [ ] Develop a simple theme system for colors and appearance.
@@ -53,5 +62,3 @@ This roadmap outlines the major development phases for the project.
 ### Phase 4: Advanced Extensibility (Future)
 - [ ] Implement the Lua scripting API for high-performance extensions.
 - [ ] Create documentation for the plugin system and Lua API.
-
-
