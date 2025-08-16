@@ -6,3 +6,5 @@ lua54 5.4.8-2
 
 # Install the latest version
 neovim
+
+zip
