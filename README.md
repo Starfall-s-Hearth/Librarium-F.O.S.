@@ -12,9 +12,7 @@ A local-first, neurodivergent-friendly shell environment for Termux, designed to
 
 ## About The Project
 
-Librarium F.O.S. (Fake Operating System) is an opinionated shell environment built for a specific setup: **Termux** running the **pacman** bootstrap and **Fish Shell**. It's not a new shell, but a complete framework for managing your entire command-line experience.
-
-The goal is to create a setup that is powerful and deeply customizable, yet simple to manage and easy on the mind. Every component is designed around a set of core principles.
+Librarium F.O.S. (Fake Operating System) is an opinionated shell environment built for a specific setup: **Termux** running the **pacman** bootstrap and **Fish Shell**. It's not a new shell, but a complete framework for managing your entire command-line experience through a simple, declarative interface.
 
 ### Key Points
 
@@ -38,21 +36,26 @@ The goal is to create a setup that is powerful and deeply customizable, yet simp
 
 ## Usage
 
-Librarium is managed by editing simple text files and then running the installer to apply the changes.
+Librarium is managed through the `fos` command-line interface and by editing configuration files.
 
-* **To manage system packages**: Add package names to `packages.txt`.
-* **To manage shell plugins**: Add the plugin's GitHub repository (`user/repo`) to `plugins.txt`.
+### Command-Line Interface
+* **`fos plugin list`** (`p-list`): List configured plugins.
+* **`fos plugin add <user/repo>`** (`p-add`): Add a new plugin.
+* **`fos plugin remove <user/repo>`** (`p-remove`): Remove a plugin.
+* **`fos plugin update [user/repo]`** (`p-update`): Update lockfiles for all or one plugin.
+* **`update-fos`**: Applies all pending changes by running the main installer.
+
+### Declarative Management
+* **To manage system packages**: Add package names to the `packages.txt` file.
 * **To add a custom command**: Place an executable script in the `bin/` directory.
 * **To add a custom function**: Place a `.fish` file in `lib/functions/`.
 * **To change the theme**: Add a `.properties` file to `share/themes/` and apply it with the `theme <theme_name>` command.
 
-After making changes, simply run `./install.sh` from the project root to apply them.
+After making changes with the CLI or by editing files, run `update-fos` to apply them.
 
 ***
 
 ## 🗺️ Project Roadmap
-
-This roadmap outlines the major development phases for the project.
 
 ### Phase 1: Foundational Framework (✅ Completed)
 - [x] Establish core principles and project structure.
