@@ -38,22 +38,30 @@ Instead of being a passive shell, S.I.D.E. acts as an active assistant that mana
 
 ## Usage
 
-Manage your S.I.D.E. with the `fos` command-line interface and by editing simple configuration files.
+Manage your S.I.D.E. with the `side` command-line interface and by editing simple configuration files.
 
 ### Command-Line Interface
-* **`fos plugin list`** (`p-list`): List configured plugins.
-* **`fos plugin add <user/repo>`** (`p-add`): Add a new plugin.
-* **`fos plugin remove <user/repo>`** (`p-remove`): Remove a plugin.
-* **`fos plugin update [user/repo]`** (`p-update`): Update lockfiles for all or one plugin.
-* **`update-fos`**: Applies all pending changes by running the main installer.
+* **`side plugin list`** (`p-list`): List configured plugins.
+* **`side plugin add <user/repo>`** (`p-add`): Add a new plugin.
+* **`side plugin remove <user/repo>`** (`p-remove`): Remove a plugin.
+* **`side plugin update [user/repo]`** (`p-update`): Update lockfiles for all or one plugin.
+* **`side theme list`** (`t-list`): List available themes.
+* **`side theme set <theme_name>`** (`t-set`): Apply a theme.
+* **`side-apply`**: Applies all pending changes by running the main installer.
 
 ### Declarative Management
 * **To manage system packages**: Add package names to `packages.txt`.
 * **To add a custom command**: Place an executable script in the `bin/` directory.
 * **To add a custom function**: Place a `.fish` file in `lib/functions/`.
-* **To change the theme**: Add a `.properties` file to `share/themes/` and apply it with the `theme <theme_name>` command.
+* **To change the theme**: Add a `.properties` file to `share/themes/`.
 
-After making changes, run `update-fos` to apply them.
+After making changes, run `side-apply` to apply them.
+
+***
+
+## 📖 Documentation
+
+For a detailed breakdown of all commands and features, please see the **[CLI Reference Guide](./docs/cli_reference.md)**.
 
 ***
 

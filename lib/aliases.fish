@@ -1,6 +1,6 @@
 # lib/aliases.fish
 #
-# A straightforward and memorable alias library for Librarium F.O.S.
+# A straightforward and memorable alias library for Librarium S.I.D.E.
 
 # --- Navigation & System ---
 alias ..="cd .."
@@ -28,12 +28,17 @@ alias g-commit="git commit -m"
 alias g-push="git push"
 alias g-log="git log --oneline --graph --decorate --all"
 
-# --- Librarium F.O.S. Management ---
-alias fos="$LIBRARIUM_ROOT/bin/librarium_interface.sh"
-alias update-fos='set -l start_dir (pwd); and cd $LIBRARIUM_ROOT; and ./install/install.sh; and cd $start_dir'
+# --- Librarium S.I.D.E. Management ---
+alias side="side_interface.sh"
+alias side-apply="side_interface.sh apply"
 
 # Plugin Management
-alias p-list="$LIBRARIUM_ROOT/bin/librarium_interface.sh plugin list"
-alias p-add="$LIBRARIUM_ROOT/bin/librarium_interface.sh plugin add"
-alias p-remove="$LIBRARIUM_ROOT/bin/librarium_interface.sh plugin remove"
-alias p-update="$LIBRARIUM_ROOT/bin/librarium_interface.sh plugin update"
+alias p-list="side_interface.sh plugin list"
+alias p-add="side_interface.sh plugin add"
+alias p-remove="side_interface.sh plugin remove"
+alias p-update="side_interface.sh plugin update"
+alias p-compile="side_interface.sh plugin compile"
+
+# Theme Management
+alias t-list="side_interface.sh theme list"
+alias t-set="side_interface.sh theme set"
