@@ -1,9 +1,9 @@
-# Librarium F.O.S. 📚
+# Librarium S.I.D.E. 💡
 
-A local-first, neurodivergent-friendly shell environment for Termux, designed to be atomic, lightweight, and extensible.
+A Smart Integrated Dev Environment for the Termux command line.
 
 > ### 🚧 Alpha Status 🚧
-> This project is in the early stages of development. Expect frequent changes, potential bugs, and breaking updates. It is not yet recommended for general use.
+> This project is in the early stages of development and is currently undergoing a significant rewrite and rebrand. Expect frequent changes, potential bugs, and breaking updates. It is not yet recommended for general use.
 
 > ### ⚠️ Disclaimer
 > This project is being developed with the assistance of a large language model (Google's Gemini). It is primarily a personal project built for my specific needs, workflow, and hardware. While it's open source, it is not intended as a general-purpose, drop-in solution for all users.
@@ -12,7 +12,9 @@ A local-first, neurodivergent-friendly shell environment for Termux, designed to
 
 ## About The Project
 
-Librarium F.O.S. (Fake Operating System) is an opinionated shell environment built for a specific setup: **Termux** running the **pacman** bootstrap and **Fish Shell**. It's not a new shell, but a complete framework for managing your entire command-line experience through a simple, declarative interface.
+Librarium S.I.D.E. (Smart Integrated Dev Environment) is a framework that transforms your terminal into an intelligent, integrated development environment. It's built for a specific setup: **Termux** running the **pacman** bootstrap and **Fish Shell**.
+
+Instead of being a passive shell, S.I.D.E. acts as an active assistant that manages your entire toolchain, automates your workflow, and provides context-aware information, much like a graphical IDE.
 
 ### Key Points
 
@@ -21,8 +23,8 @@ Librarium F.O.S. (Fake Operating System) is an opinionated shell environment bui
 * **🔗 Symlink-Based**: All configurations are managed in this single repository and safely linked into place by the installer.
 * **🧠 Neurodivergent-Friendly**: A focus on clarity, low cognitive load, and clean interfaces to make the command line a more comfortable place.
 * **🪶 Lightweight**: Built with performance in mind for a snappy experience on mobile devices.
-* **🧩 Extensible**: Features a declarative system for managing system packages (`packages.txt`) and shell plugins (`plugins.txt`).
-* **🔒 Secure by Design**: The built-in plugin manager uses a per-plugin lockfile system to ensure all dependencies are reproducible and secure.
+* **🧩 Extensible**: Manage system packages and shell extensions through declarative text files and a simple command-line interface.
+* **🔒 Secure by Design**: The built-in extension manager uses a per-plugin lockfile system to ensure all dependencies are reproducible and secure.
 
 ***
 
@@ -30,13 +32,13 @@ Librarium F.O.S. (Fake Operating System) is an opinionated shell environment bui
 
 1.  **Termux** with the **`pacman` bootstrap**.
 2.  Core utilities **`git`** and **`curl`** installed.
-3.  A **Nerd Font** (like Fira Code Nerd Font) installed and set in your Termux terminal for the prompt icons to display correctly.
+3.  A **Nerd Font** installed and set in your Termux terminal for the prompt icons to display correctly.
 
 ***
 
 ## Usage
 
-Librarium is managed through the `fos` command-line interface and by editing configuration files.
+Manage your S.I.D.E. with the `fos` command-line interface and by editing simple configuration files.
 
 ### Command-Line Interface
 * **`fos plugin list`** (`p-list`): List configured plugins.
@@ -46,12 +48,12 @@ Librarium is managed through the `fos` command-line interface and by editing con
 * **`update-fos`**: Applies all pending changes by running the main installer.
 
 ### Declarative Management
-* **To manage system packages**: Add package names to the `packages.txt` file.
+* **To manage system packages**: Add package names to `packages.txt`.
 * **To add a custom command**: Place an executable script in the `bin/` directory.
 * **To add a custom function**: Place a `.fish` file in `lib/functions/`.
 * **To change the theme**: Add a `.properties` file to `share/themes/` and apply it with the `theme <theme_name>` command.
 
-After making changes with the CLI or by editing files, run `update-fos` to apply them.
+After making changes, run `update-fos` to apply them.
 
 ***
 
