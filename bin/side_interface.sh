@@ -22,6 +22,7 @@ show_main_help() {
     echo "  apply     - Applies all configurations by running the installer."
     echo "  plugin    - Manage shell extensions."
     echo "  theme     - Manage terminal themes."
+    echo "  status    - Display a diagnostic summary of the environment."
     echo "  help      - Show help for a command."
 }
 
@@ -33,7 +34,7 @@ show_plugin_help() {
     echo "  list              - List the plugins in your plugins.txt file."
     echo "  add <user/repo>   - Add a new plugin."
     echo "  remove <user/repo>- Remove an existing plugin."
-    echo "  update [user/repo]- Update lockfiles for all or one plugin."
+    echo "  update [user/repo] [--apply] - Update lockfiles and optionally apply changes."
     echo "  compile           - Compile plugins into optimized packs."
 }
 
@@ -55,11 +56,14 @@ case "$COMMAND" in
     apply)
         main
         ;;
+    status)
+        exec "$LIBRARIUM_ROOT/lib/commands/status.sh"
+        ;;
     plugin | theme)
         # REMOVED 'local' from the next line
         SUBCOMMAND_SCRIPT_PATH="$LIBRARIUM_ROOT/lib/commands/${COMMAND}_${SUBCOMMAND}.sh"
         if [ -f "$SUBCOMMAND_SCRIPT_PATH" ]; then
-            exec "$SUBCOMMAND_SCRIPT_PATH" "$ARGUMENT"
+            exec "$SUBCOMMAND_SCRIPT_PATH" "${@:3}"
         else
             case "$SUBCOMMAND" in
                 "" | "-h" | "--help")

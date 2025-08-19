@@ -1,5 +1,5 @@
 # lib/functions/fish_prompt.fish
-# A custom, Geometry-style prompt for Librarium F.O.S. (Corrected)
+# (This script is updated with a smarter Git check)
 
 function _prompt_segment
     # Helper to draw a full segment.
@@ -16,7 +16,7 @@ end
 function fish_prompt
     set -l last_status $status
     set -l normal (set_color normal)
-    set -l last_bg 'normal' # Start with the default background
+    set -l last_bg 'normal'
 
     # --- Path Segment ---
     set -l path_bg blue
@@ -26,19 +26,31 @@ function fish_prompt
     set last_bg $path_bg
 
     # --- Git Segment ---
-    set -l git_branch (git branch --show-current 2>/dev/null)
-    if test -n "$git_branch"
-        set -l git_bg
-        set -l git_fg black
-        # UPDATED THIS LINE with double quotes
-        if test -n "(git status --porcelain)"
-            set git_bg yellow # Dirty is yellow
+    # First, check if we're in a git repo to avoid running git commands otherwise
+    if git rev-parse --is-inside-work-tree >/dev/null 2>&1
+        set -l git_branch
+        set -l git_status_output
+
+        if functions -q evalcache
+            set git_branch (evalcache git branch --show-current 2>/dev/null)
+            set git_status_output (evalcache git status --porcelain 2>/dev/null)
         else
-            set git_bg green # Clean is green
+            set git_branch (git branch --show-current 2>/dev/null)
+            set git_status_output (git status --porcelain 2>/dev/null)
         end
-        _prompt_separator $last_bg $git_bg
-        _prompt_segment $git_bg $git_fg " $git_branch"
-        set last_bg $git_bg
+
+        if test -n "$git_branch"
+            set -l git_bg
+            set -l git_fg black
+            if test -n "$git_status_output"
+                set git_bg yellow # Dirty is yellow
+            else
+                set git_bg green # Clean is green
+            end
+            _prompt_separator $last_bg $git_bg
+            _prompt_segment $git_bg $git_fg " $git_branch"
+            set last_bg $git_bg
+        end
     end
 
     # --- Final Prompt Character ---

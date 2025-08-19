@@ -14,7 +14,7 @@ alias du="du -h"
 # --- File System ---
 alias ls="ls -la --color=auto -F"
 
-# --- Package Management (pacman) ---
+# --- Package Management (pacman)---
 alias pac-update="pacman -Syu"
 alias pac-install="pacman -S"
 alias pac-search="pacman -Ss"
@@ -29,16 +29,17 @@ alias g-push="git push"
 alias g-log="git log --oneline --graph --decorate --all"
 
 # --- Librarium S.I.D.E. Management ---
-alias side="side_interface.sh"
-alias side-apply="side_interface.sh apply"
+alias side="$LIBRARIUM_ROOT/bin/side_interface.sh"
+alias side-apply="$LIBRARIUM_ROOT/bin/side_interface.sh apply"
+alias side-status="$LIBRARIUM_ROOT/bin/side_interface.sh status"
 
 # Plugin Management
-alias p-list="side_interface.sh plugin list"
-alias p-add="side_interface.sh plugin add"
-alias p-remove="side_interface.sh plugin remove"
-alias p-update="side_interface.sh plugin update"
-alias p-compile="side_interface.sh plugin compile"
+alias p-list="$LIBRARIUM_ROOT/bin/side_interface.sh plugin list"
+alias p-add="$LIBRARIUM_ROOT/bin/side_interface.sh plugin add"
+alias p-remove="$LIBRARIUM_ROOT/bin/side_interface.sh plugin remove"
+alias p-update="$LIBRARIUM_ROOT/bin/side_interface.sh plugin update"
+alias p-compile="$LIBRARIUM_ROOT/bin/side_interface.sh plugin compile"
 
 # Theme Management
-alias t-list="side_interface.sh theme list"
-alias t-set="side_interface.sh theme set"
+alias t-list="$LIBRARIUM_ROOT/bin/side_interface.sh theme list"
+alias t-set="$LIBRARIUM_ROOT/bin/side_interface.sh theme set"
