@@ -1,1 +1,2 @@
 kyohsuke/fish-evalcache
+infused-kim/fish-refresh-prompt-on-cmd

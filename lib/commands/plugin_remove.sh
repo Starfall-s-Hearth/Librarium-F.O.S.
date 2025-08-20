@@ -1,4 +1,4 @@
-#!/usr/-bin/env bash
+#!/usr/bin/env bash
 source "$LIBRARIUM_ROOT/install/install.sh"
 
 PLUGIN_NAME="$1"
@@ -14,4 +14,4 @@ fi
 
 log_info "Removing '$PLUGIN_NAME' from plugins.txt..."
 grep -vFx -- "$PLUGIN_NAME" "$PLUGIN_FILE" > "$PLUGIN_FILE.tmp" && mv "$PLUGIN_FILE.tmp" "$PLUGIN_FILE"
-log_success "Plugin removed. Run 'update-fos' to apply changes."
+log_success "Plugin removed. Run 'side-apply' to apply changes."
